@@ -1,12 +1,12 @@
-# HR Interview Evaluation
+# 👩‍💻HR Interview Evaluation
 Structured interview evaluation for Odoo Recruitment with weighted scoring, automated recommendations, workflow management, and Recruitment integration.
  
-## Overview
+## 📑Overview
 HR Interview Evaluation extends the Odoo Recruitment module by providing a structured and reusable interview evaluation process.
  
 Instead of relying on free-text interview notes, interviewers evaluate applicants using predefined weighted criteria. The system automatically calculates the total score and generates a hiring recommendation.
  
-## Key Features
+## ✨Key Features
  
 ### 📑 Evaluation Criteria
 - Define reusable interview evaluation criteria.
@@ -141,3 +141,6 @@ Validation rules include:
 | Category | Human Resources        |
 | Depends  | `hr`, `hr_recruitment` |
 | Author   | **Fauza Lutfia**       |
+## ⚖️License
+
+This project is licensed under the GNU Lesser General Public License v3.0 (LGPL-3.0). See the LICENSE file for details.
