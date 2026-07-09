@@ -1,13 +1,13 @@
 # 👩‍💻HR Interview Evaluation
 Structured interview evaluation for Odoo Recruitment with weighted scoring, automated recommendations, workflow management, and Recruitment integration.
- 
+
 ## 📑Overview
 HR Interview Evaluation extends the Odoo Recruitment module by providing a structured and reusable interview evaluation process.
  
 Instead of relying on free-text interview notes, interviewers evaluate applicants using predefined weighted criteria. The system automatically calculates the total score and generates a hiring recommendation.
- 
+
 ## ✨Key Features
- 
+
 ### 📑 Evaluation Criteria
 - Define reusable interview evaluation criteria.
 - Assign percentage weights to each criterion.
@@ -16,6 +16,7 @@ Instead of relying on free-text interview notes, interviewers evaluate applicant
 - Active criteria must always total 100% before an interview evaluation can be created.
 - Prevent duplicate criterion names.
 - Prevent zero or negative weights.
+  
 ### 📝 Interview Evaluation
 - Automatically generate interview references **(INT00001, INT00002, ...)**.
 - Automatically generate evaluation lines from active criteria.
@@ -32,7 +33,7 @@ Instead of relying on free-text interview notes, interviewers evaluate applicant
 | ≥ 75 | Hire |
 | ≥ 60 | No Hire |
 | < 60 | Strong No Hire |
- 
+
 ### 🔄 Workflow
 Each evaluation follows a simple status flow:
  
@@ -52,6 +53,7 @@ Draft → In Progress → Done
 - Interview dates cannot be earlier than today.
 - Completed evaluations become read-only.
 - Completed evaluations cannot be deleted.
+  
 ### 👥 Recruitment Integration
 A **Smart Button** is added to the Applicant form.
  
@@ -59,6 +61,7 @@ It allows users to:
 - View the number of interview evaluations.
 - Open all evaluations related to the applicant.
 - Quickly create additional evaluations.
+  
 ## 📂 Menu Structure
  
 ```
@@ -66,7 +69,7 @@ Interview Evaluations
 ├── Interview Evaluations
 └── Evaluation Criteria
 ```
- 
+
 ## 🗃️ Models
  
 | Model | Description |
@@ -74,9 +77,33 @@ Interview Evaluations
 | `hr.evaluation.criteria` | Reusable, weighted evaluation criteria |
 | `hr.interview.evaluation` | Interview evaluation header (candidate, interviewer, date, status, total score, recommendation) |
 | `hr.interview.evaluation.line` | One scored line per criterion within an evaluation |
- 
+
+## ⚙️ Installation
+
+1. Clone this repository into your Odoo `addons` or `custom_addons` directory:
+
+```bash
+git clone https://github.com/fzltf/hr_interview_evaluation.git
+```
+
+2. Make sure the directory containing the module is included in your `addons_path` (configured in `odoo.conf` or using the `--addons-path` startup option).
+
+3. Restart the Odoo server.
+
+4. Open **Apps**, then click **Update Apps List**.
+
+5. Search for **HR Interview Evaluation** and click **Install**.
+
+### Requirements
+
+- Odoo **19.0**
+- PostgreSQL
+- Python **3.12**
+- Required modules:
+  - `hr`
+  - `hr_recruitment`
+
 ## 🛠️ Typical Usage
- 
 1. Configure **Evaluation Criteria**.
 2. Ensure active weights total **100%**.
 3. Create an Interview Evaluation.
@@ -84,6 +111,7 @@ Interview Evaluations
 5. Score every criterion.
 6. Click **Mark as Done**.
 7. Review the automatic recommendation.
+   
 ## 📸 Screenshots
  
 ### Evaluation Criteria
@@ -100,7 +128,7 @@ Interview Evaluations
  
 ### Interview Evaluation Form
 ![Interview Evaluation Form](static/description/form-interview-evaluation.png)
- 
+
 ## 🔐 Access Rights
 Internal Users (`base.group_user`) can:
  
@@ -113,6 +141,7 @@ for:
 - Evaluation Criteria
 - Interview Evaluation
 - Interview Evaluation Line
+  
 ## ⚙️ Technical Notes
 - Uses a dedicated `ir.sequence`.
 - Prefix: `INT`
@@ -132,6 +161,7 @@ Validation rules include:
 - Interview date cannot be earlier than today.
 - Completed evaluations cannot be modified.
 - Completed evaluations cannot be deleted.
+  
 ### 👩‍💻 Module Information
  
 | Property | Value                  |
@@ -141,6 +171,7 @@ Validation rules include:
 | Category | Human Resources        |
 | Depends  | `hr`, `hr_recruitment` |
 | Author   | **Fauza Lutfia**       |
+
 ## ⚖️License
 
 This project is licensed under the GNU Lesser General Public License v3.0 (LGPL-3.0). See the LICENSE file for details.
