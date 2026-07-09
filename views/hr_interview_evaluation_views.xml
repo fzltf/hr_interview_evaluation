@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Tree View -->
+    <record id="view_hr_interview_evaluation_tree" model="ir.ui.view">
+        <field name="name">hr.interview.evaluation.tree</field>
+        <field name="model">hr.interview.evaluation</field>
+        <field name="arch" type="xml">
+            <list default_order="interview_date desc">
+                <field name="name" />
+                <field name="applicant_id" />
+                <field name="interviewer_id" />
+                <field name="interview_date" />
+                <field name="state" />
+                <field name="total_score" readonly="1" />
+                <field name="recommendation" />
+            </list>
+        </field>
+    </record>
+    <!-- Form View -->
+    <record id="view_hr_interview_evaluation_form" model="ir.ui.view">
+        <field name="name">hr.interview.evaluation.form</field>
+        <field name="model">hr.interview.evaluation</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button
+                        name="action_start"
+                        string="Start Interview"
+                        type="object"
+                        class="btn-primary"
+                        invisible="state != 'draft'" />
+                    <button
+                        name="action_done"
+                        string="Mark as Done"
+                        type="object"
+                        class="btn-success"
+                        invisible="state != 'in_progress'" />
+                    <button
+                        name="action_cancel"
+                        string="Cancel"
+                        type="object"
+                        invisible="state in ('cancelled', 'done')" />
+                    <button
+                        name="action_draft"
+                        string="Reset to Draft"
+                        type="object"
+                        invisible="state != 'cancelled'" />
+                    <field
+                        name="state"
+                        widget="statusbar"
+                        statusbar_visible="draft,in_progress,done" />
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" readonly="1" />
+                            <field name="applicant_id" readonly="state == 'done'" />
+                            <field name="interviewer_id" readonly="state == 'done'" />
+                        </group>
+                        <group>
+                            <field name="interview_date" readonly="state == 'done'" />
+                            <field name="total_score" readonly="1" />
+                            <field name="recommendation" readonly="1" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Evaluation Lines">
+                            <field name="evaluation_line_ids" readonly="state == 'done'">
+                                <list
+                                    create="0"
+                                    delete="0"
+                                    editable="bottom">
+                                    <field name="criteria_id" readonly="1" />
+                                    <field name="weight" readonly="1" />
+                                    <field name="score" />
+                                    <field name="weighted_score" readonly="1" />
+                                    <field name="notes" />
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Action -->
+    <record id="action_hr_interview_evaluation" model="ir.actions.act_window">
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new interview evaluation.
+            </p>
+        </field>
+        <field name="name">Interview Evaluations</field>
+        <field name="res_model">hr.interview.evaluation</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

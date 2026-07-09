@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environment
+venv/
+env/
+.venv/
+ENV/
+
+# Odoo specific
+*.pot
+*.pyc
+.Python
+
+# Odoo filestore / sessions (if accidentally created inside addon folder)
+filestore/
+sessions/
+
+# Logs
+*.log
+odoo.log
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment / secrets
+.env
+odoo.conf
+
+# Build artifacts
+*.egg-info/
+dist/
+build/

@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_evaluation_criteria,hr.evaluation.criteria,model_hr_evaluation_criteria,base.group_user,1,1,1,1
+access_hr_interview_evaluation,hr.interview.evaluation,model_hr_interview_evaluation,base.group_user,1,1,1,1
+access_hr_interview_evaluation_line,hr.interview.evaluation.line,model_hr_interview_evaluation_line,base.group_user,1,1,1,1
